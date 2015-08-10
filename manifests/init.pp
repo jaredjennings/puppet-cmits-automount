@@ -30,5 +30,6 @@ class automount {
 # for that.
     include nfs
 
-    include "automount::${::osfamily}"
+    $lower_osfamily = downcase($::osfamily)
+    include "automount::${lower_osfamily}"
 }
