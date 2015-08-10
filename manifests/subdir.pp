@@ -39,7 +39,7 @@ define automount::subdir($ensure='present') {
 
 # Now, make a subtable in the automount configuration.
     case $::osfamily {
-        'redhat': {
+        'RedHat': {
             file { "/etc/auto.${name}":
                 owner => root, group => 0, mode => 0644,
                 ensure => $ensure,
@@ -55,7 +55,7 @@ define automount::subdir($ensure='present') {
                 }
             }
         }
-        'darwin': {}
-        default: { unimplemented() }
+        'Darwin': {}
+        default: { fail "unimplemented on ${::osfamily}" }
     }
 }

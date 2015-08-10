@@ -52,7 +52,7 @@ define automount::mount($from, $under='', $ensure='present', $options=[]) {
     include automount
 
     case $::osfamily {
-        'redhat': {
+        'RedHat': {
             automount::mount::redhat { $name:
                 from => $from,
                 under => $under,
@@ -60,7 +60,7 @@ define automount::mount($from, $under='', $ensure='present', $options=[]) {
                 options => $options,
             }
         }
-        'darwin': {
+        'Darwin': {
             automount::mount::darwin { $name:
                 from => $from,
                 under => $under,
@@ -68,6 +68,6 @@ define automount::mount($from, $under='', $ensure='present', $options=[]) {
                 options => $options,
             }
         }
-        default: { unimplemented() }
+        default: { fail "unimplemented on ${::osfamily}" }
     }
 }

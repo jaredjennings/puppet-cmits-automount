@@ -24,14 +24,14 @@ define automount::submount($under, $from, $ensure='present') {
     include automount
 
     case $::osfamily {
-        'redhat': {
+        'RedHat': {
             automount::mount::redhat { $name:
                 from => $from,
                 under => $under,
                 ensure => $ensure,
             }
         }
-        'darwin': {
+        'Darwin': {
 # \implements{unixsrg}{GEN002420,GEN005900} Ensure the \verb!nosuid! option
 # is used when mounting an NFS filesystem.
 #
@@ -44,6 +44,6 @@ define automount::submount($under, $from, $ensure='present') {
                 notify => Service['com.apple.autofsd'],
             }
         }
-        default: { unimplemented() }
+        default: { fail "unimplemented on ${::osfamily}" }
     }
 }

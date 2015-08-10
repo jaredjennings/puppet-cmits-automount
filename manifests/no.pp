@@ -19,13 +19,13 @@
 
 class automount::no {
     case $::osfamily {
-        'redhat': {
+        'RedHat': {
             service { "autofs":
                 enable => false,
                ensure => stopped,
             }
         }
-        'darwin': { warning "unimplemented on Macs" }
-        default:  { unimplemented() }
+        'Darwin': { warning "unimplemented on Macs" }
+        default:  { fail "unimplemented on ${::osfamily}" }
     }
 }
