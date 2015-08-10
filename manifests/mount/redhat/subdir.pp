@@ -39,6 +39,6 @@ define automount::mount::redhat::subdir($ensure='present') {
             require => [],
         }
     } else {
-        unimplemented()
+        fail "removing automount subdirs is not implemented yet"
     }
 }
