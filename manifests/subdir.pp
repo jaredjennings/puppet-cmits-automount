@@ -41,7 +41,7 @@ define automount::subdir($ensure='present') {
     case $::osfamily {
         'RedHat': {
             file { "/etc/auto.${name}":
-                owner => root, group => 0, mode => 0644,
+                owner => root, group => 0, mode => '0644',
                 ensure => $ensure,
             }
             if $ensure == 'present' {

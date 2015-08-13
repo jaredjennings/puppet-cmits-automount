@@ -25,7 +25,7 @@ define automount::mount::redhat::subdir($ensure='present') {
 
 # Now, make a subtable in the automount configuration.
     file { "/etc/auto.${name}":
-        owner => root, group => 0, mode => 0644,
+        owner => root, group => 0, mode => '0644',
         ensure => $ensure,
     }
     if $ensure == 'present' {

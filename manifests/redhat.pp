@@ -35,7 +35,7 @@ class automount::redhat {
 # Make sure the auto.net file exists: otherwise any attempt at editing it will
 # fail, causing errors.
     file { "/etc/auto.net":
-        owner => root, group => 0, mode => 0644,
+        owner => root, group => 0, mode => '0644',
         ensure => present,
     }
 

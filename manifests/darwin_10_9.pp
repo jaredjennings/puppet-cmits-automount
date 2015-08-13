@@ -24,7 +24,7 @@ class automount::darwin_10_9 {
 # contain anything weird. Oh, well; what we need in it is quite fixed
 # anyway.
     file { '/etc/auto_master':
-        owner => root, group => 0, mode => 0644,
+        owner => root, group => 0, mode => '0644',
         content => "
 /net auto_net
 ",
@@ -33,7 +33,7 @@ class automount::darwin_10_9 {
 # Make sure the auto.net file exists: otherwise any attempt at editing it will
 # fail, causing errors.
     file { "/etc/auto_net":
-        owner => root, group => 0, mode => 0644,
+        owner => root, group => 0, mode => '0644',
         ensure => present,
     }
 
